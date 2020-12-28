@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<otrs_config version="2.0" init="Config">
+	<Setting Name="CustomerITSMConfigItem###ShowColumns" Required="1" Valid="1">
+        <Description Translatable="1">Defines the shown columns in the customer config item overview. This option has no effect on the position of the column.</Description>
+        <Navigation>Frontend::Customer::ITSMConfigItem</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="CurInciSignal">1</Item>
+                <Item Key="Number">1</Item>
+                <Item Key="Name">1</Item>
+                <Item Key="Class">0</Item>
+                <Item Key="CurDeplState">1</Item>
+                <Item Key="CurDeplStateType">0</Item>
+                <Item Key="CurInciState">1</Item>
+                <Item Key="CurInciStateType">0</Item>
+                <Item Key="LastChanged">1</Item>
+            </Hash>
+        </Value>
+    </Setting>
+	<Setting Name="CustomerITSMConfigItem###ShowColumnsByClass" Required="1" Valid="1">
+        <Description Translatable="1">Defines the shown columns in the customer config item overview. This option has no effect on the position of the column. Not valid for ALL (default) filter</Description>
+        <Navigation>Frontend::Customer::ITSMConfigItem</Navigation>
+        <Value>
+            <Array>
+			    <Item>Computer::CurInciSignal</Item>
+				<Item>Computer::Number</Item>
+                <Item>Computer::Name</Item>
+                <Item>Computer::CurDeplState</Item>
+				<Item>Computer::CurInciState</Item>
+                <Item>Computer::HardDisk::1</Item>
+                <Item>Hardware::Name</Item>
+				<Item>Software::Name</Item>
+            </Array>
+        </Value>
+    </Setting>
+	<Setting Name="CustomerITSMConfigItem###CustomerUserField" Required="0" Valid="1">
+        <Description Translatable="1">CI field name that hold Customer User login data. Default Owner</Description>
+        <Navigation>Frontend::Customer::ITSMConfigItem</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">Owner</Item>
+        </Value>
+    </Setting>
+	<Setting Name="CustomerITSMConfigItem###CustomerIDField" Required="0" Valid="1">
+        <Description Translatable="1">CI field name that hold CustomerID data. Default CustomerID</Description>
+        <Navigation>Frontend::Customer::ITSMConfigItem</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">CustomerID</Item>
+        </Value>
+    </Setting>
+    </Setting>
+	<Setting Name="CustomerFrontend::Module###CustomerITSMConfigItem" Required="0" Valid="1">
+        <Description Translatable="1">Frontend module registration for the customer interface.</Description>
+        <Navigation>Frontend::Customer::ModuleRegistration</Navigation>
+        <Value>
+            <Item ValueType="FrontendRegistration">
+                <Hash>
+                    <Item Key="Group">
+                        <Array>
+                        </Array>
+                    </Item>
+                    <Item Key="GroupRo">
+                        <Array>
+                        </Array>
+                    </Item>
+                    <Item Key="Description" Translatable="1">Config Items of Customer</Item>
+                    <Item Key="NavBarName">Config Items Overview</Item>
+                    <Item Key="Title" Translatable="1">Config Items Overview</Item>
+                </Hash>
+            </Item>
+        </Value>
+	</Setting>   
+	<Setting Name="Loader::Module::CustomerITSMConfigItem###002-CustomerITSMConfigItem" Required="0" Valid="1">
+        <Description Translatable="1">Loader module registration for the customer interface.</Description>
+        <Navigation>Frontend::Customer::ModuleRegistration::Loader</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="CSS">
+                    <Array>
+						<Item>ITSM.Customer.Default.css</Item>
+						<Item>ITSM.Customer.Table.css</Item>
+                    </Array>
+                </Item>
+            </Hash>
+        </Value>
+    </Setting>
+	<Setting Name="CustomerFrontend::Navigation###CustomerITSMConfigItem###003-ITSMConfigItem" Required="0" Valid="1">
+        <Description Translatable="1">Main menu item registration.</Description>
+        <Navigation>Frontend::Customer::ModuleRegistration::MainMenu</Navigation>
+        <Value>
+            <Array>
+                <DefaultItem ValueType="FrontendNavigation">
+                    <Hash>
+                    </Hash>
+                </DefaultItem>
+                <Item>
+                    <Hash>
+                        <Item Key="Group">
+                            <Array>
+                            </Array>
+                        </Item>
+                        <Item Key="GroupRo">
+                            <Array>
+                            </Array>
+                        </Item>
+                        <Item Key="Description" Translatable="1">Config Items.</Item>
+                        <Item Key="Name" Translatable="1">Config Items Overview</Item>
+                        <Item Key="Link">Action=CustomerITSMConfigItem</Item>
+                        <Item Key="LinkOption"></Item>
+                        <Item Key="NavBar">Config Items Overview</Item>
+                        <Item Key="Type">Menu</Item>
+                        <Item Key="Block"></Item>
+                        <Item Key="AccessKey">o</Item>
+                        <Item Key="Prio">200</Item>
+                    </Hash>
+                </Item>
+				<Item>
+                    <Hash>
+                        <Item Key="Group">
+                            <Array>
+                            </Array>
+                        </Item>
+                        <Item Key="GroupRo">
+                            <Array>
+                            </Array>
+                        </Item>
+                        <Item Key="Description" Translatable="1">My Config Items.</Item>
+                        <Item Key="Name" Translatable="1">My Config Items</Item>
+                        <Item Key="Link">Action=CustomerITSMConfigItem;Subaction=MyCI;Filter=All</Item>
+                        <Item Key="LinkOption"></Item>
+                        <Item Key="NavBar">Config Items Overview</Item>
+                        <Item Key="Type">Submenu</Item>
+                        <Item Key="Block"></Item>
+                        <Item Key="AccessKey">o</Item>
+                        <Item Key="Prio">201</Item>
+                    </Hash>
+                </Item>
+				<Item>
+                    <Hash>
+                        <Item Key="Group">
+                            <Array>
+                            </Array>
+                        </Item>
+                        <Item Key="GroupRo">
+                            <Array>
+                            </Array>
+                        </Item>
+                        <Item Key="Description" Translatable="1">Company Config Items.</Item>
+                        <Item Key="Name" Translatable="1">Company Config Items</Item>
+                        <Item Key="Link">Action=CustomerITSMConfigItem;Subaction=CompanyCI;Filter=All</Item>
+                        <Item Key="LinkOption"></Item>
+                        <Item Key="NavBar">Config Items Overview</Item>
+                        <Item Key="Type">Submenu</Item>
+                        <Item Key="Block"></Item>
+                        <Item Key="AccessKey">o</Item>
+                        <Item Key="Prio">202</Item>
+                    </Hash>
+                </Item>
+            </Array>
+        </Value>
+    </Setting>
+	
+	<Setting Name="CustomerFrontend::Module###CustomerITSMConfigItemZoom" Required="0" Valid="1">
+        <Description Translatable="1">Frontend module registration for the customer interface.</Description>
+        <Navigation>Frontend::Customer::ModuleRegistration</Navigation>
+        <Value>
+            <Item ValueType="FrontendRegistration">
+                <Hash>
+                    <Item Key="Group">
+                        <Array>
+                        </Array>
+                    </Item>
+                    <Item Key="GroupRo">
+                        <Array>
+                        </Array>
+                    </Item>
+                    <Item Key="Description" Translatable="1">ITSM Config Item Zoomof Customer</Item>
+                    <Item Key="NavBarName">Config Item</Item>
+                    <Item Key="Title" Translatable="1">ITSM Config Item Zoom</Item>
+                </Hash>
+            </Item>
+        </Value>
+	</Setting>   
+	<Setting Name="Loader::Module::CustomerITSMConfigItemZoom###003-CustomerITSMConfigItemZoom" Required="0" Valid="1">
+        <Description Translatable="1">Loader module registration for the customer interface.</Description>
+        <Navigation>Frontend::Customer::ModuleRegistration::Loader</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="CSS">
+                    <Array>
+						<Item>ITSM.Customer.Default.css</Item>
+						<Item>ITSM.Customer.Table.css</Item>
+						<Item>ITSM.Customer.ConfigItemZoom.css</Item>
+                    </Array>
+                </Item>
+            </Hash>
+        </Value>
+    </Setting>
+</otrs_config>
