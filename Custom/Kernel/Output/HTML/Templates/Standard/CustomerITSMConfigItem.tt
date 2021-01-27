@@ -1,0 +1,171 @@
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+
+<div id="MainBox" class="TicketView ARIARoleMain Sortable">
+    <div class="ActionRow">
+        <ul class="Filter Tabs">
+[% RenderBlockStart("FilterHeader") %]
+            <li class="[% Data.ClassLI | html %]">
+                <a class="[% Data.Class | html %]" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=[% Env("Subaction") %];Filter=[% Data.Filter | uri %];SortBy=[% Data.SortBy | uri %];Order=[% Data.OrderBy | uri %];">
+                    [% Translate(Data.Name) | html %] ([% Data.Count | html %])
+                </a>
+            </li>
+[% RenderBlockEnd("FilterHeader") %]
+            <li class="Clear"></li>
+        </ul>
+        <div class="Tabs Pagination">
+            [% Data.SiteNavBar %]
+        </div>
+        <div class="Clear"></div>
+    </div>
+    <div class="Content">
+        <table class="ITSMOverview">
+            <thead>
+                <tr>
+[% RenderBlockStart("RecordCurInciSignalHeader") %]
+                    <th class="Fixed">
+                        <span>[% Translate("State") | html %]</span>
+                    </th>
+[% RenderBlockEnd("RecordCurInciSignalHeader") %]
+[% RenderBlockStart("RecordNumberHeader") %]
+                    <th class="Number [% Data.CSS | html %]">
+                        <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=[% Env("Subaction") %];[% Data.LinkSort %];SortBy=Number;OrderBy=[% Data.OrderBy | uri %];Filter=[% Data.Filter | uri %]">[% Config("ITSMConfigItem::Hook") %]</a>
+                    </th>
+[% RenderBlockEnd("RecordNumberHeader") %]
+[% RenderBlockStart("RecordNameHeader") %]
+                    <th class="Name [% Data.CSS | html %]">
+                        <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=[% Env("Subaction") %];[% Data.LinkSort %];SortBy=Name;OrderBy=[% Data.OrderBy | uri %];Filter=[% Data.Filter | uri %]">[% Translate("Name") | html %]</a>
+                    </th>
+[% RenderBlockEnd("RecordNameHeader") %]
+[% RenderBlockStart("RecordClassHeader") %]
+                    <th class="Class [% Data.CSS | html %]">
+                        <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=[% Env("Subaction") %];[% Data.LinkSort %];SortBy=ClassID;OrderBy=[% Data.OrderBy | uri %];Filter=[% Data.Filter | uri %]">[% Translate("Class") | html %]</a>
+                    </th>
+[% RenderBlockEnd("RecordClassHeader") %]
+[% RenderBlockStart("RecordCurDeplStateHeader") %]
+                    <th class="CurDeplState [% Data.CSS | html %]">
+                        <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=[% Env("Subaction") %];[% Data.LinkSort %];SortBy=DeplStateID;OrderBy=[% Data.OrderBy | uri %];Filter=[% Data.Filter | uri %]">[% Translate("Deployment State") | html %]</a>
+                    </th>
+[% RenderBlockEnd("RecordCurDeplStateHeader") %]
+[% RenderBlockStart("RecordCurDeplStateTypeHeader") %]
+                    <th class="Fixed">
+                        <span>[% Translate("Deployment State Type") | html %]</span>
+                    </th>
+[% RenderBlockEnd("RecordCurDeplStateTypeHeader") %]
+[% RenderBlockStart("RecordCurInciStateHeader") %]
+                    <th class="CurInciState [% Data.CSS | html %]">
+                        <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=[% Env("Subaction") %];[% Data.LinkSort %];SortBy=InciStateID;OrderBy=[% Data.OrderBy | uri %];Filter=[% Data.Filter | uri %]">[% Translate("Current Incident State") | html %]</a>
+                    </th>
+[% RenderBlockEnd("RecordCurInciStateHeader") %]
+[% RenderBlockStart("RecordCurInciStateTypeHeader") %]
+                    <th class="Fixed">
+                        <span>[% Translate("Current Incident State Type") | html %]</span>
+                    </th>
+[% RenderBlockEnd("RecordCurInciStateTypeHeader") %]
+[% RenderBlockStart("RecordLastChangedHeader") %]
+                    <th class="LastChanged [% Data.CSS | html %]">
+                        <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=[% Env("Subaction") %];[% Data.LinkSort %];SortBy=ChangeTime;OrderBy=[% Data.OrderBy | uri %];Filter=[% Data.Filter | uri %]">[% Translate("Last changed") | html %]</a>
+                    </th>
+[% RenderBlockEnd("RecordLastChangedHeader") %]
+                </tr>
+            </thead>
+            <tbody>
+[% RenderBlockStart("NoDataFoundMsg") %]
+                <tr>
+                    <td colspan="[% Data.TotalColumns | html %]">
+                        [% Translate("No data found.") | html %]
+                    </td>
+                </tr>
+[% RenderBlockEnd("NoDataFoundMsg") %]
+[% RenderBlockStart("Record") %]
+                <tr class="MasterAction">
+[% RenderBlockStart("RecordCurInciSignal") %]
+                    <td title="[% Translate(Data.CurInciState) | html %]">
+                        <div class="Flag Small CompanyCIFlag">
+                            <span class="[% Data.CurInciSignal | html %]">"[% Translate(Data.CurInciState) | html %]"</span>
+                        </div>
+                    </td>
+[% RenderBlockEnd("RecordCurInciSignal") %]
+[% RenderBlockStart("RecordNumber") %]
+                    <td>
+[% RenderBlockStart("RecordNumberLinkStart") %]
+                        <a href="[% Env("Baselink") %]Action=CustomerITSMConfigItemZoom;ConfigItemNumber=[% Data.Number | uri %]" class="MasterActionLink" title="[% Data.Number | uri %]">
+[% RenderBlockEnd("RecordNumberLinkStart") %]
+                            [% Data.Number | html %]
+[% RenderBlockStart("RecordNumberLinkEnd") %]
+                        </a>
+[% RenderBlockEnd("RecordNumberLinkEnd") %]
+                    </td>
+[% RenderBlockEnd("RecordNumber") %]
+[% RenderBlockStart("RecordName") %]
+                    <td>
+                        <div title="[% Data.Name | html %]">[% Data.Name | truncate(40) | html %]</div>
+                    </td>
+[% RenderBlockEnd("RecordName") %]
+[% RenderBlockStart("RecordClass") %]
+                    <td>
+                        <div title="[% Translate(Data.Class) | html %]">[% Translate(Data.Class) | html %]</div>
+                    </td>
+[% RenderBlockEnd("RecordClass") %]
+[% RenderBlockStart("RecordCurDeplState") %]
+                    <td>
+                        <div title="[% Translate(Data.CurDeplState) | html %]">[% Translate(Data.CurDeplState) | html %]</div>
+                    </td>
+[% RenderBlockEnd("RecordCurDeplState") %]
+[% RenderBlockStart("RecordCurDeplStateType") %]
+                    <td>
+                        <div title="[% Translate(Data.CurDeplStateType) | html %]">[% Translate(Data.CurDeplStateType) | html %]</div>
+                    </td>
+[% RenderBlockEnd("RecordCurDeplStateType") %]
+[% RenderBlockStart("RecordCurInciState") %]
+                    <td>
+                        <div title="[% Translate(Data.CurInciState) | html %]">[% Translate(Data.CurInciState) | html %]</div>
+                    </td>
+[% RenderBlockEnd("RecordCurInciState") %]
+[% RenderBlockStart("RecordCurInciStateType") %]
+                    <td>
+                        <div title="[% Translate(Data.CurInciStateType) | html %]">[% Translate(Data.CurInciStateType) | html %]</div>
+                    </td>
+[% RenderBlockEnd("RecordCurInciStateType") %]
+[% RenderBlockStart("RecordLastChanged") %]
+                    <td>
+                        <div title="[% Data.CreateTime | Localize("TimeLong") %]">[% Data.CreateTime | Localize("TimeLong") %]</div>
+                    </td>
+[% RenderBlockEnd("RecordLastChanged") %]
+                </tr>
+[% RenderBlockEnd("Record") %]
+            </tbody>
+        </table>
+    </div>
+</div>
+
+[% WRAPPER JSOnDocumentComplete %]
+<script type="text/javascript">//<![CDATA[
+    var Active;
+    $('.MasterAction').bind('click', function (Event) {
+        var $MasterActionLink = $(this).find('.MasterActionLink');
+        if (typeof  $MasterActionLink.attr('href') === 'undefined') {
+            return false;
+        }
+        // only act if the link was not clicked directly
+        if (Event.target !== $MasterActionLink.get(0)) {
+            window.location = $MasterActionLink.attr('href');
+            return false;
+        }
+    });
+
+    if ($('.MasterActionLink').length !== 0) {
+        Active = 1;
+    }
+
+    // add table functions here (because of performance reasons only do this if table has not more than 200 rows)
+    if ($('table.ITSMOverview tbody tr').length < 200) {
+        $('table.ITSMOverview tbody tr').filter(':nth-child(even)').addClass('Even');
+        if (typeof Active !== 'undefined') {
+            $('table.ITSMOverview tbody').addClass('Active');
+        }
+    }
+//]]></script>
+[% END %]
