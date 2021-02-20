@@ -1,9 +1,9 @@
-@media screen,projection,tv,handheld {
-
 /**
- * @package     OTRS Framework - Skin "Default"
- * @section     Customer
+ * @package     Skin "Default"
+ * @section     Default Settings
  */
+
+@media screen,projection,tv,handheld {
 
 table.ITSMOverview {
     top: -1px;
@@ -129,9 +129,6 @@ table.ITSMOverview {
     cursor: pointer;
 }
 
-/**
- * @subsection  OverviewTable zebra style
- */
 .ITSMOverview tbody tr td {
     background-color: #FBFBFB;
 }
@@ -140,10 +137,6 @@ table.ITSMOverview {
     background-color: #F2F2F2;
 }
 
-
-/**
- * @subsection  Table Style Hovered
- */
 
 .ITSMOverview tbody.Active tr:hover td {
     background: #19475B;
@@ -160,16 +153,10 @@ table.ITSMOverview {
     text-shadow: 0 1px 0 #F4B259;
 }
 
-/**
- * @subsection  TableData Styles
- */
 .ChangeStateID {
     padding-left: 8px;
 }
 
-/**
- * @subsection  .ITSMConfigItemDetailsTable Table
- */
 .ITSMConfigItemDetailsTable {
     font-size: 12px;
     width: 100%;
@@ -214,10 +201,6 @@ table.ITSMOverview {
 .ITSMConfigItemDetailsTable .ParentAttribute {
     font-weight: bold;
 }
-
-/**
- * @subsection  .ITSMConfigItemDetailsTable Table zebra style
- */
 
 .ITSMConfigItemDetailsTable tbody tr.Even td {
     background-color: #F2F2F2;

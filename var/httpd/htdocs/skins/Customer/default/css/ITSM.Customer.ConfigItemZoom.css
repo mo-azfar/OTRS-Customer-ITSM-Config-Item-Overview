@@ -1,0 +1,18 @@
+/**
+ * @package     Skin "Default"
+ * @section     Default Settings
+ */
+
+@media screen,projection,tv,handheld {
+
+.ConfigItemZoom .Content {
+    padding: 8px 10px 0;
+}
+
+.ITSMConfigItemSeperatorRow {
+    background: linear-gradient(to bottom, #FFFFFF 0%, #FCFCFC 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-bottom: 1px solid #E8E8E8;
+    border-top: 4px solid #FFFFFF;
+}
+
+} /* end @media */<üX¥x>
